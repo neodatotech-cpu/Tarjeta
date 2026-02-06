@@ -3,1041 +3,951 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph David - Cumpleaños y Bautizo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <title>Joseph David - Cumpleaños & Bautizo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Parisienne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* --- RESET Y ESTILOS BASE --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e8d5b7 0%, #f4e4d0 50%, #e8d5b7 100%);
-            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #f8f8f8;
+            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .invitation-container {
+            max-width: 450px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Loading Screen */
-        .loading-screen {
+        /* --- PANTALLA DE CARGA --- */
+        #loadingScreen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #8B6F47 0%, #b8935f 100%);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1a5d3a 0%, #2d8b5d 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
+            transition: opacity 0.8s ease, visibility 0.8s;
         }
-
-        .loading-screen.hidden {
+        #loadingScreen.hidden {
             opacity: 0;
             visibility: hidden;
         }
-
         .loading-icon {
-            font-size: 80px;
-            animation: bounce 1s infinite;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            animation: gentlePulse 2s infinite ease-in-out;
         }
-
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
         .loading-text {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* --- SECCIÓN HERO / PORTADA --- */
+        .hero-section {
+            background: linear-gradient(to bottom, #1a5d3a, #2d8b5d);
             color: white;
-            font-size: 24px;
-            margin-top: 20px;
-            font-family: 'Pacifico', cursive;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Main Container */
-        .invitation {
-            max-width: 100%;
-            opacity: 0;
-            animation: fadeIn 1s ease-in 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        /* Hero Section */
-        .hero {
+            text-align: center;
+            padding: 3.5rem 2rem 2.5rem;
             position: relative;
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(139, 111, 71, 0.9), rgba(184, 147, 95, 0.9)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%238B6F47" width="1200" height="800"/></svg>');
-            background-size: cover;
-            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            overflow: hidden;
         }
-
-        .hero::before {
+        .hero-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.1) 100%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
-
-        /* Floating Safari Elements */
-        .safari-float {
-            position: absolute;
-            font-size: 40px;
-            opacity: 0.2;
-            animation: float 6s infinite ease-in-out;
+        .intro-text {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
         }
-
-        .safari-float:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .safari-float:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
-        .safari-float:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 2s; }
-        .safari-float:nth-child(4) { top: 60%; right: 10%; animation-delay: 3s; }
-        .safari-float:nth-child(5) { bottom: 10%; right: 20%; animation-delay: 1.5s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(10deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: slideDown 1s ease-out 1s backwards;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .event-type {
-            color: white;
-            font-size: 18px;
-            letter-spacing: 3px;
+        .event-title {
+            font-size: 1.1rem;
+            font-weight: 500;
             text-transform: uppercase;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-
-        .hero-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 70px;
-            color: white;
-            margin: 20px 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 30px;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 14px;
-            text-align: center;
-            animation: floatUpDown 2s infinite;
-            cursor: pointer;
-        }
-
-        @keyframes floatUpDown {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, 10px); }
-        }
-
-        .scroll-indicator i {
-            display: block;
-            font-size: 24px;
-            margin-top: 10px;
-        }
-
-        /* Photo Section */
-        .photo-section {
-            background: white;
-            padding: 60px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 40px;
-            color: #8B6F47;
-            margin-bottom: 40px;
+            letter-spacing: 2.5px;
+            margin-bottom: 2.5rem;
             position: relative;
             display: inline-block;
         }
-
-        .section-title::after {
+        .event-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #D4A574, transparent);
+            width: 40px;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.5);
         }
-
-        .photo-container {
-            position: relative;
-            max-width: 400px;
-            margin: 0 auto;
-            animation: zoomIn 1s ease-out;
+        .child-name {
+            font-family: 'Parisienne', cursive;
+            font-size: 3.8rem;
+            margin: 1.5rem 0;
+            line-height: 1.1;
+            font-weight: normal;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
         }
-
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .photo-frame {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(139, 111, 71, 0.3);
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: auto;
+        .child-name::after {
+            content: '';
             display: block;
+            width: 80px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 1.8rem auto;
         }
-
-        .photo-overlay {
+        .call-to-action {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+            font-style: italic;
+            opacity: 0.95;
+        }
+        .music-notice {
+            background-color: rgba(255, 255, 255, 0.12);
+            border-radius: 50px;
+            padding: 1rem 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .music-notice i {
+            font-size: 1.2rem;
+        }
+        .scroll-prompt {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 60%, rgba(139, 111, 71, 0.8));
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
+            align-items: center;
+            animation: float 2.5s infinite ease-in-out;
+            cursor: pointer;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+        .scroll-prompt i {
+            margin-top: 5px;
+            font-size: 1.2rem;
         }
 
-        .child-name {
-            font-family: 'Dancing Script', cursive;
-            font-size: 50px;
-            color: white;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-            margin-bottom: 5px;
+        /* --- CUENTA REGRESIVA --- */
+        .countdown-section {
+            padding: 3.5rem 2rem;
+            background-color: #fff;
+            text-align: center;
+            border-bottom: 1px solid #eee;
         }
-
-        .child-age {
-            font-size: 24px;
-            color: white;
-            font-weight: 300;
+        .countdown-title {
+            font-size: 1.8rem;
+            color: #1a5d3a;
+            margin-bottom: 2.2rem;
+            font-weight: 500;
         }
-
-        /* Safari Icons Section */
-        .safari-icons {
+        .countdown-display {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 15px;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
-
-        .safari-icon {
-            font-size: 60px;
-            animation: bounce 2s infinite;
+        .time-unit {
+            background-color: #f0f7f3;
+            border-radius: 12px;
+            padding: 1.2rem 0.5rem;
+            min-width: 70px;
+            border: 1px solid #e1eee6;
         }
-
-        .safari-icon:nth-child(2) { animation-delay: 0.3s; }
-        .safari-icon:nth-child(3) { animation-delay: 0.6s; }
-        .safari-icon:nth-child(4) { animation-delay: 0.9s; }
-
-        /* Details Section */
-        .details-section {
-            background: linear-gradient(135deg, #f9f5f0 0%, #fff 100%);
-            padding: 60px 20px;
+        .time-value {
+            font-size: 2.3rem;
+            font-weight: 600;
+            color: #1a5d3a;
+            display: block;
+            line-height: 1;
         }
-
-        .details-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .detail-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(139, 111, 71, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: slideInLeft 0.6s ease-out backwards;
-        }
-
-        .detail-card:nth-child(1) { animation-delay: 0.2s; }
-        .detail-card:nth-child(2) { animation-delay: 0.4s; }
-        .detail-card:nth-child(3) { animation-delay: 0.6s; }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .detail-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(139, 111, 71, 0.2);
-        }
-
-        .detail-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #8B6F47, #D4A574);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .detail-content h3 {
-            color: #8B6F47;
-            font-size: 16px;
+        .time-label {
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 5px;
+            color: #5a7c6b;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        .event-date-time {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .time-box, .date-box {
+            text-align: center;
+        }
+        .time-box i, .date-box i {
+            font-size: 1.8rem;
+            color: #2d8b5d;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .time-text, .date-text {
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: #333;
+        }
+        .date-details {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* --- SECCIÓN DE LUGAR --- */
+        .location-section {
+            padding: 3rem 2rem;
+            background-color: #f9f9f9;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .section-icon-title {
+            font-size: 1.8rem;
+            color: #1a5d3a;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .section-icon-title i {
+            font-size: 1.5rem;
+        }
+        .venue-name {
+            font-size: 1.4rem;
+            color: #222;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .venue-address {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .parking-note {
+            background-color: #e8f4ee;
+            border-radius: 10px;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #2d8b5d;
+            border-left: 4px solid #2d8b5d;
+            max-width: 350px;
+            margin: 2rem auto 0;
+            text-align: left;
+        }
+        .parking-note strong {
+            color: #1a5d3a;
+        }
+
+        /* --- SECCIÓN FAMILIA --- */
+        .family-section {
+            padding: 3rem 2rem;
+            background-color: #fff;
+            text-align: center;
+        }
+        .parents-container, .godparents-container {
+            margin-bottom: 2.5rem;
+        }
+        .family-subtitle {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #1a5d3a;
+            margin-bottom: 1.2rem;
             font-weight: 600;
         }
-
-        .detail-content p {
+        .family-names {
+            font-size: 1.4rem;
             color: #333;
-            font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.8;
+            font-weight: 400;
         }
 
-        /* Countdown Section */
-        .countdown-section {
-            background: linear-gradient(135deg, #8B6F47, #b8935f);
-            padding: 60px 20px;
+        /* --- SECCIÓN RSVP / CONFIRMACIÓN --- */
+        .rsvp-section {
+            padding: 3rem 2rem;
+            background-color: #f0f7f3;
             text-align: center;
-            color: white;
+            border-top: 1px solid #e1eee6;
         }
-
-        .countdown-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 40px;
-            margin-bottom: 30px;
+        .rsvp-instruction {
+            font-size: 1rem;
+            color: #5a7c6b;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
-
-        .countdown-timer {
+        .contact-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
-
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px 30px;
-            min-width: 100px;
-        }
-
-        .countdown-number {
-            font-size: 48px;
-            font-weight: 700;
-            display: block;
-        }
-
-        .countdown-label {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 5px;
-            opacity: 0.9;
-        }
-
-        /* Message Section */
-        .message-section {
-            background: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .message-box {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px;
-            background: linear-gradient(135deg, #f9f5f0, #fff);
-            border-radius: 20px;
-            border-left: 5px solid #D4A574;
-            box-shadow: 0 10px 30px rgba(139, 111, 71, 0.1);
-        }
-
-        .message-box p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-            font-style: italic;
-        }
-
-        .parents-names {
-            margin-top: 30px;
-            font-size: 20px;
-            color: #8B6F47;
-            font-weight: 600;
-        }
-
-        /* RSVP Section */
-        .rsvp-section {
-            background: linear-gradient(135deg, #f9f5f0 0%, #fff 100%);
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .rsvp-button {
+        .contact-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 18px 40px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
+            padding: 1rem 1.8rem;
+            background-color: #1a5d3a;
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(26, 93, 58, 0.25);
+            flex: 1;
+            max-width: 180px;
+            justify-content: center;
         }
-
-        .rsvp-button:hover {
+        .contact-btn:hover {
+            background-color: #13472b;
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 6px 16px rgba(26, 93, 58, 0.35);
+        }
+        .contact-btn i {
+            font-size: 1.2rem;
+        }
+        .envelope-rain {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px dashed #2d8b5d;
+        }
+        .envelope-rain-icon {
+            font-size: 2.5rem;
+            color: #d4a96a;
+            margin-bottom: 1rem;
+        }
+        .envelope-rain h3 {
+            color: #1a5d3a;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        .envelope-rain p {
+            color: #666;
+            font-size: 0.95rem;
         }
 
-        .rsvp-button i {
-            font-size: 24px;
+        /* --- PIE DE PÁGINA --- */
+        .footer {
+            padding: 2.5rem 2rem;
+            background: linear-gradient(to bottom, #1a5d3a, #13472b);
+            color: rgba(255, 255, 255, 0.85);
+            text-align: center;
+        }
+        .final-message {
+            font-family: 'Parisienne', cursive;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        .footer-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            max-width: 300px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        /* Music Control */
-        .music-control {
+        /* --- BOTONES FLOTANTES DE CONTROL --- */
+        .floating-controls {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #8B6F47, #D4A574);
-            border-radius: 50%;
+            bottom: 25px;
+            left: 25px;
+            z-index: 100;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(139, 111, 71, 0.4);
-            z-index: 1000;
-            transition: all 0.3s;
+            flex-direction: column;
+            gap: 15px;
         }
-
-        .music-control:hover {
-            transform: scale(1.1);
-        }
-
-        .music-control.playing {
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 5px 20px rgba(139, 111, 71, 0.4); }
-            50% { box-shadow: 0 5px 30px rgba(139, 111, 71, 0.8); }
-        }
-
-        /* Edit Button */
-        .edit-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #8B6F47, #D4A574);
+        .floating-btn {
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #1a5d3a, #2d8b5d);
             color: white;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(139, 111, 71, 0.4);
-            z-index: 1000;
             border: none;
-            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(26, 93, 58, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
         }
-
-        .edit-button:hover {
+        .floating-btn:hover {
             transform: scale(1.1);
+            box-shadow: 0 7px 20px rgba(26, 93, 58, 0.5);
+        }
+        .floating-btn.music-btn.playing {
+            animation: musicPulse 1.5s infinite;
+        }
+        @keyframes musicPulse {
+            0% { box-shadow: 0 5px 15px rgba(26, 93, 58, 0.4); }
+            70% { box-shadow: 0 5px 20px 10px rgba(26, 93, 58, 0.3); }
+            100% { box-shadow: 0 5px 15px rgba(26, 93, 58, 0.4); }
         }
 
-        /* Edit Panel */
-        .edit-panel {
+        /* --- PANEL DE EDICIÓN --- */
+        #editPanel {
             position: fixed;
             top: 0;
-            right: -400px;
+            right: -420px;
             width: 400px;
             height: 100vh;
-            background: white;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+            background-color: #fff;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
             padding: 30px;
             overflow-y: auto;
             z-index: 10000;
-            transition: right 0.3s;
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
-        .edit-panel.active {
+        #editPanel.active {
             right: 0;
         }
-
-        .edit-panel h2 {
-            font-family: 'Dancing Script', cursive;
-            color: #8B6F47;
-            font-size: 32px;
-            margin-bottom: 20px;
+        .edit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f7f3;
         }
-
+        .edit-header h2 {
+            color: #1a5d3a;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .close-edit {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #888;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+        }
+        .close-edit:hover {
+            color: #1a5d3a;
+        }
         .edit-group {
             margin-bottom: 20px;
         }
-
         .edit-group label {
             display: block;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8B6F47;
-            margin-bottom: 8px;
+            font-size: 0.85rem;
             font-weight: 600;
+            color: #1a5d3a;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-
         .edit-group input,
         .edit-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
+            padding: 12px 15px;
+            border: 1.5px solid #e1eee6;
             border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
             transition: border-color 0.3s;
+            background-color: #f9fcfb;
         }
-
         .edit-group input:focus,
         .edit-group textarea:focus {
             outline: none;
-            border-color: #8B6F47;
+            border-color: #2d8b5d;
+            background-color: #fff;
         }
-
         .edit-group textarea {
             resize: vertical;
             min-height: 80px;
         }
-
-        .close-edit {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: #f0f0f0;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            color: #666;
+        .edit-hint {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+            font-style: italic;
         }
 
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 50px;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-
-            .child-name {
-                font-size: 40px;
-            }
-
-            .edit-panel {
-                width: 100%;
-                right: -100%;
-            }
-
-            .countdown-item {
-                min-width: 80px;
-                padding: 15px 20px;
-            }
-
-            .countdown-number {
-                font-size: 36px;
-            }
+        /* --- RESPONSIVE --- */
+        @media (max-width: 480px) {
+            .invitation-container { max-width: 100%; box-shadow: none; }
+            .hero-section { padding: 2.5rem 1.5rem; }
+            .child-name { font-size: 3.2rem; }
+            .countdown-display { gap: 10px; }
+            .time-unit { min-width: 65px; padding: 1rem 0.5rem; }
+            .time-value { font-size: 2rem; }
+            .event-date-time { gap: 1.5rem; }
+            .contact-buttons { flex-direction: column; align-items: center; }
+            .contact-btn { max-width: 250px; width: 100%; }
+            #editPanel { width: 100%; right: -100%; }
+            .floating-controls { bottom: 20px; left: 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-icon">🦁</div>
-        <div class="loading-text">Cargando invitación...</div>
+    <!-- Pantalla de carga -->
+    <div id="loadingScreen">
+        <div class="loading-icon">👶</div>
+        <div class="loading-text">Preparando una celebración especial...</div>
     </div>
 
-    <!-- Main Invitation -->
-    <div class="invitation">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="safari-float">🦁</div>
-            <div class="safari-float">🦒</div>
-            <div class="safari-float">🐘</div>
-            <div class="safari-float">🌿</div>
-            <div class="safari-float">🦓</div>
+    <!-- Contenedor principal de la invitación -->
+    <div class="invitation-container">
 
-            <div class="hero-content">
-                <div class="event-type" id="eventType">Dios nos regala la dicha de celebrar la vida y fe en un día muy especial: el cumpleaños y bautizo de:</div>
-                <h1 class="hero-title" id="heroTitle">Joseph David</h1>
-                <p class="hero-subtitle" id="heroSubtitle">¡Acompáñanos a celebrar!</p>
+        <!-- Sección Hero / Portada -->
+        <section class="hero-section" id="heroSection">
+            <p class="intro-text" id="introText">Dios nos regala la dicha de celebrar la vida y la fe en un día muy especial:</p>
+            <div class="event-title" id="eventTitle">el cumpleaños y bautizo de</div>
+            <h1 class="child-name" id="childName">Joseph David</h1>
+            <p class="call-to-action" id="callToAction">Acompáñanos a celebrar este día tan especial!</p>
+
+            <div class="music-notice">
+                <i class="fas fa-play-circle"></i>
+                <span>Dale play y déjate envolver por la melodía que inspira este momento.</span>
             </div>
 
-            <div class="scroll-indicator" onclick="document.querySelector('.photo-section').scrollIntoView({behavior: 'smooth'})">
-                Desliza para ver más
+            <div class="scroll-prompt" onclick="document.querySelector('.countdown-section').scrollIntoView({ behavior: 'smooth' })">
+                <span>Explora la invitación</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
         </section>
 
-        <!-- Photo Section -->
-        <section class="photo-section">
-            <h2 class="section-title">Nuestro pequeño aventurero</h2>
-            <div class="photo-container">
-                <div class="photo-frame">
-                    <img id="mainPhoto" src="bebe.jpg" alt="Foto del niño">
-                    <div class="photo-overlay">
-                        <div class="child-name" id="childName">Joseph David</div>
-                        <div class="child-age" id="childAge">¡Cumple 1 añito!</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="safari-icons">
-                <div class="safari-icon">🦁</div>
-                <div class="safari-icon">🦒</div>
-                <div class="safari-icon">🐘</div>
-                <div class="safari-icon">🦓</div>
-            </div>
-        </section>
-
-        <!-- Details Section -->
-        <section class="details-section">
-            <div class="details-container">
-                <div class="detail-card">
-                    <div class="detail-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <div class="detail-content">
-                        <h3>Fecha</h3>
-                        <p id="eventDate">Sábado, 15 de Marzo 2026</p>
-                    </div>
-                </div>
-
-                <div class="detail-card">
-                    <div class="detail-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="detail-content">
-                        <h3>Hora</h3>
-                        <p id="eventTime">3:00 PM</p>
-                    </div>
-                </div>
-
-                <div class="detail-card">
-                    <div class="detail-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="detail-content">
-                        <h3>Lugar</h3>
-                        <p id="eventLocation">Salón de Eventos Safari<br>Calle Principal #123</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Countdown Section -->
+        <!-- Sección de Cuenta Regresiva -->
         <section class="countdown-section">
-            <h2 class="countdown-title">Faltan solo...</h2>
-            <div class="countdown-timer" id="countdown">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">00</span>
-                    <span class="countdown-label">Días</span>
+            <h2 class="countdown-title" id="countdownTitle">Sólo Faltan:</h2>
+            <div class="countdown-display" id="countdownDisplay">
+                <div class="time-unit">
+                    <span class="time-value" id="countdownDays">00</span>
+                    <span class="time-label">días</span>
                 </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">00</span>
-                    <span class="countdown-label">Horas</span>
+                <div class="time-unit">
+                    <span class="time-value" id="countdownHours">00</span>
+                    <span class="time-label">hor</span>
                 </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">00</span>
-                    <span class="countdown-label">Minutos</span>
+                <div class="time-unit">
+                    <span class="time-value" id="countdownMinutes">00</span>
+                    <span class="time-label">min</span>
                 </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">00</span>
-                    <span class="countdown-label">Segundos</span>
+                <div class="time-unit">
+                    <span class="time-value" id="countdownSeconds">00</span>
+                    <span class="time-label">seg</span>
+                </div>
+            </div>
+
+            <div class="event-date-time">
+                <div class="time-box">
+                    <i class="far fa-clock"></i>
+                    <div class="time-text" id="eventTimeDisplay">5:00 p.m.</div>
+                </div>
+                <div class="date-box">
+                    <i class="far fa-calendar-alt"></i>
+                    <div class="date-text" id="eventDayDisplay">sábado</div>
+                    <div class="date-details" id="eventDateDisplay">7 de febrero</div>
                 </div>
             </div>
         </section>
 
-        <!-- Message Section -->
-        <section class="message-section">
-            <div class="message-box">
-                <p id="eventMessage">
-                    "Acompáñanos a celebrar este día tan especial en la vida de nuestro pequeño. 
-                    Tu presencia será el mejor regalo para llenar de alegría este momento único."
-                </p>
-                <div class="parents-names" id="parentsNames">Con amor, María y José</div>
+        <!-- Sección de Lugar -->
+        <section class="location-section">
+            <h2 class="section-icon-title">
+                <i class="fas fa-map-marker-alt"></i> Te esperamos en:
+            </h2>
+            <h3 class="venue-name" id="venueName">Servicios Agora S.A.S. Eventos</h3>
+            <p class="venue-address" id="venueAddress">
+                Transversal 48 número 21-74<br>
+                Barrio Bosque, diagonal al<br>
+                Colegio Fernandez Baena.
+            </p>
+            <div class="parking-note">
+                <strong>Nota:</strong> Servicio de parqueadero interno y externo
             </div>
         </section>
 
-        <!-- RSVP Section -->
+        <!-- Sección de Familia -->
+        <section class="family-section">
+            <div class="parents-container">
+                <h3 class="family-subtitle">Papás:</h3>
+                <p class="family-names" id="parentsNames">Xenia Orozco Madariaga y<br>Joaquín Pérez Aguas</p>
+            </div>
+            <div class="godparents-container">
+                <h3 class="family-subtitle">Padrinos:</h3>
+                <p class="family-names" id="godparentsNames">Janett Vergara Arnedo<br>José Luis Pérez Aguas</p>
+            </div>
+        </section>
+
+        <!-- Sección de Confirmación (RSVP) -->
         <section class="rsvp-section">
-            <h2 class="section-title">Confirma tu asistencia</h2>
-            <p style="margin-bottom: 30px; color: #666; font-size: 16px;">Contáctanos por WhatsApp</p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" class="rsvp-button" id="rsvpButtonMom">
+            <p class="rsvp-instruction">
+                Para organizar todo con amor, agradecemos que nos confirmes tu asistencia.
+            </p>
+            <div class="contact-buttons">
+                <a href="#" class="contact-btn" id="whatsappMomBtn">
                     <i class="fab fa-whatsapp"></i>
-                    <span>Mamá</span>
+                    <span>con la mamá</span>
                 </a>
-                <a href="#" class="rsvp-button" id="rsvpButtonDad">
+                <a href="#" class="contact-btn" id="whatsappDadBtn">
                     <i class="fab fa-whatsapp"></i>
-                    <span>Papá</span>
+                    <span>con el papá</span>
                 </a>
             </div>
+
+            <div class="envelope-rain">
+                <div class="envelope-rain-icon">✉️</div>
+                <h3>LLUVIA DE SOBRES</h3>
+                <p>Una tradición llena de buenos deseos para el bebé.</p>
+            </div>
         </section>
+
+        <!-- Pie de página -->
+        <footer class="footer">
+            <div class="final-message" id="finalMessage">¡Te esperamos!</div>
+            <p class="footer-note">Con cariño, la familia de Joseph David</p>
+        </footer>
     </div>
 
-    <!-- Music Control -->
-    <div class="music-control" id="musicControl">
-        <i class="fas fa-music"></i>
+    <!-- Controles flotantes -->
+    <div class="floating-controls">
+        <button class="floating-btn music-btn" id="musicControlBtn">
+            <i class="fas fa-music" id="musicIcon"></i>
+        </button>
+        <button class="floating-btn" id="editControlBtn">
+            <i class="fas fa-pencil-alt"></i>
+        </button>
     </div>
 
-    <!-- Edit Button -->
-    <button class="edit-button" id="editButton">
-        <i class="fas fa-pencil-alt"></i>
-    </button>
-
-    <!-- Edit Panel -->
-    <div class="edit-panel" id="editPanel">
-        <button class="close-edit" onclick="closeEditPanel()">✕</button>
-        <h2>Editar Invitación</h2>
-
-        <div class="edit-group">
-            <label>Tipo de Evento</label>
-            <input type="text" id="editEventType" value="Cumpleaños & Bautizo">
+    <!-- Panel de edición -->
+    <div id="editPanel">
+        <div class="edit-header">
+            <h2><i class="fas fa-cog"></i> Editar Invitación</h2>
+            <button class="close-edit" id="closeEditPanelBtn">&times;</button>
         </div>
 
         <div class="edit-group">
-            <label>Nombre del Niño/a</label>
+            <label for="editIntroText">Texto de Introducción</label>
+            <textarea id="editIntroText">Dios nos regala la dicha de celebrar la vida y la fe en un día muy especial:</textarea>
+        </div>
+
+        <div class="edit-group">
+            <label for="editChildName">Nombre del Niño/a</label>
             <input type="text" id="editChildName" value="Joseph David">
         </div>
 
         <div class="edit-group">
-            <label>Edad/Cumpleaños</label>
-            <input type="text" id="editChildAge" value="¡Cumple 1 añito!">
+            <label for="editEventDate">Fecha del Evento (para cuenta regresiva)</label>
+            <input type="date" id="editEventDate" value="2026-02-07">
+            <div class="edit-hint">La cuenta regresiva se calculará a partir de esta fecha.</div>
         </div>
 
         <div class="edit-group">
-            <label>Subtítulo Hero</label>
-            <input type="text" id="editHeroSubtitle" value="¡Acompáñanos a celebrar!">
+            <label for="editEventTime">Hora del Evento</label>
+            <input type="text" id="editEventTime" value="5:00 p.m.">
         </div>
 
         <div class="edit-group">
-            <label>Foto Principal (URL o subir)</label>
-            <input type="text" id="editPhotoUrl" placeholder="https://ejemplo.com/foto.jpg">
-            <input type="file" id="editPhotoFile" accept="image/*" style="margin-top: 10px;">
+            <label for="editEventDay">Día de la Semana</label>
+            <input type="text" id="editEventDay" value="sábado">
         </div>
 
         <div class="edit-group">
-            <label>Fecha del Evento</label>
-            <input type="text" id="editEventDate" value="Sábado, 15 de Marzo 2026">
+            <label for="editEventDateText">Fecha Formateada</label>
+            <input type="text" id="editEventDateText" value="7 de febrero">
         </div>
 
         <div class="edit-group">
-            <label>Fecha para Countdown (YYYY-MM-DD)</label>
-            <input type="date" id="editCountdownDate" value="2026-03-15">
+            <label for="editVenueName">Nombre del Lugar</label>
+            <input type="text" id="editVenueName" value="Servicios Agora S.A.S. Eventos">
         </div>
 
         <div class="edit-group">
-            <label>Hora</label>
-            <input type="text" id="editEventTime" value="3:00 PM">
+            <label for="editVenueAddress">Dirección (usar &lt;br&gt; para saltos)</label>
+            <textarea id="editVenueAddress">Transversal 48 número 21-74\nBarrio Bosque, diagonal al\nColegio Fernandez Baena.</textarea>
         </div>
 
         <div class="edit-group">
-            <label>Lugar</label>
-            <textarea id="editEventLocation">Salón de Eventos Safari
-Calle Principal #123</textarea>
+            <label for="editParentsNames">Nombres de los Padres</label>
+            <textarea id="editParentsNames">Xenia Orozco Madariaga y\nJoaquín Pérez Aguas</textarea>
         </div>
 
         <div class="edit-group">
-            <label>Mensaje</label>
-            <textarea id="editEventMessage">"Acompáñanos a celebrar este día tan especial en la vida de nuestro pequeño. Tu presencia será el mejor regalo para llenar de alegría este momento único."</textarea>
+            <label for="editGodparentsNames">Nombres de los Padrinos</label>
+            <textarea id="editGodparentsNames">Janett Vergara Arnedo\nJosé Luis Pérez Aguas</textarea>
         </div>
 
         <div class="edit-group">
-            <label>Nombres de los Padres</label>
-            <input type="text" id="editParentsNames" value="Con amor, María y José">
+            <label for="editWhatsAppMom">WhatsApp Mamá (código país + número)</label>
+            <input type="text" id="editWhatsAppMom" value="573001234567" placeholder="Ej: 573001234567">
         </div>
 
         <div class="edit-group">
-            <label>WhatsApp de la Mamá (con código de país)</label>
-            <input type="text" id="editWhatsAppMom" placeholder="573001234567" value="573001234567">
+            <label for="editWhatsAppDad">WhatsApp Papá (código país + número)</label>
+            <input type="text" id="editWhatsAppDad" value="573009876543" placeholder="Ej: 573009876543">
         </div>
 
         <div class="edit-group">
-            <label>WhatsApp del Papá (con código de país)</label>
-            <input type="text" id="editWhatsAppDad" placeholder="573009876543" value="573009876543">
-        </div>
-
-        <div class="edit-group">
-            <label>Música de Fondo (URL MP3 - Opcional)</label>
-            <input type="text" id="editMusicUrl" placeholder="https://ejemplo.com/musica.mp3">
+            <label for="editFinalMessage">Mensaje Final</label>
+            <input type="text" id="editFinalMessage" value="¡Te esperamos!">
         </div>
     </div>
 
-    <!-- Hidden Audio -->
-    <audio id="backgroundMusic" loop></audio>
+    <!-- Elemento de audio para música de fondo -->
+    <audio id="backgroundMusic" loop>
+        <!-- La fuente de audio se establecerá dinámicamente o puede ser un archivo local -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-clear-sky-479.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
 
     <script>
-        // Loading Screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
+        // ============================================
+        // 1. INICIALIZACIÓN Y PANTALLA DE CARGA
+        // ============================================
+        window.addEventListener('load', function() {
+            setTimeout(function() {
                 document.getElementById('loadingScreen').classList.add('hidden');
-            }, 2000);
+                // Iniciar la cuenta regresiva una vez cargada la página
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+            }, 1800); // 1.8 segundos de pantalla de carga
         });
 
-        // Edit Panel
-        const editButton = document.getElementById('editButton');
-        const editPanel = document.getElementById('editPanel');
-
-        editButton.addEventListener('click', () => {
-            editPanel.classList.add('active');
-        });
-
-        function closeEditPanel() {
-            editPanel.classList.remove('active');
-        }
-
-        // Live Editing
-        const editFields = {
-            editEventType: 'eventType',
-            editChildName: ['childName', 'heroTitle'],
-            editChildAge: 'childAge',
-            editHeroSubtitle: 'heroSubtitle',
-            editEventDate: 'eventDate',
-            editEventTime: 'eventTime',
-            editEventMessage: 'eventMessage',
-            editParentsNames: 'parentsNames'
-        };
-
-        Object.keys(editFields).forEach(editId => {
-            const editElement = document.getElementById(editId);
-            const targetIds = Array.isArray(editFields[editId]) ? editFields[editId] : [editFields[editId]];
-            
-            editElement.addEventListener('input', (e) => {
-                targetIds.forEach(targetId => {
-                    const element = document.getElementById(targetId);
-                    if (element) {
-                        element.innerHTML = e.target.value.replace(/\n/g, '<br>');
-                    }
-                });
-            });
-        });
-
-        // Location editing
-        document.getElementById('editEventLocation').addEventListener('input', (e) => {
-            document.getElementById('eventLocation').innerHTML = e.target.value.replace(/\n/g, '<br>');
-        });
-
-        // Photo upload
-        document.getElementById('editPhotoUrl').addEventListener('input', (e) => {
-            if (e.target.value.trim()) {
-                document.getElementById('mainPhoto').src = e.target.value;
-            }
-        });
-
-        document.getElementById('editPhotoFile').addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    document.getElementById('mainPhoto').src = event.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // WhatsApp RSVP - Mom
-        document.getElementById('editWhatsAppMom').addEventListener('input', (e) => {
-            const phone = e.target.value.trim();
-            const childName = document.getElementById('editChildName').value;
-            const message = `Hola! Confirmo mi asistencia al evento de ${childName}`;
-            if (phone) {
-                document.getElementById('rsvpButtonMom').href = 
-                    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            }
-        });
-
-        // WhatsApp RSVP - Dad
-        document.getElementById('editWhatsAppDad').addEventListener('input', (e) => {
-            const phone = e.target.value.trim();
-            const childName = document.getElementById('editChildName').value;
-            const message = `Hola! Confirmo mi asistencia al evento de ${childName}`;
-            if (phone) {
-                document.getElementById('rsvpButtonDad').href = 
-                    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            }
-        });
-
-        // Initialize WhatsApp links on load
-        window.addEventListener('load', () => {
-            const momPhone = document.getElementById('editWhatsAppMom').value;
-            const dadPhone = document.getElementById('editWhatsAppDad').value;
-            const childName = document.getElementById('editChildName').value;
-            const message = `Hola! Confirmo mi asistencia al evento de ${childName}`;
-            
-            if (momPhone) {
-                document.getElementById('rsvpButtonMom').href = 
-                    `https://wa.me/${momPhone}?text=${encodeURIComponent(message)}`;
-            }
-            if (dadPhone) {
-                document.getElementById('rsvpButtonDad').href = 
-                    `https://wa.me/${dadPhone}?text=${encodeURIComponent(message)}`;
-            }
-        });
-
-        // Countdown Timer
-        let countdownInterval;
+        // ============================================
+        // 2. CUENTA REGRESIVA (COUNTDOWN)
+        // ============================================
+        let targetEventDate = new Date('2026-02-07T17:00:00'); // 7 de febrero de 2026, 5:00 PM
 
         function updateCountdown() {
-            const countdownDate = document.getElementById('editCountdownDate').value;
-            if (!countdownDate) {
-                // Si no hay fecha, mostrar mensaje
-                document.querySelector('.countdown-title').textContent = 'Configura la fecha del evento';
+            const now = new Date().getTime();
+            const timeLeft = targetEventDate - now;
+
+            if (timeLeft < 0) {
+                // Si la fecha ya pasó
+                document.getElementById('countdownDays').textContent = '00';
+                document.getElementById('countdownHours').textContent = '00';
+                document.getElementById('countdownMinutes').textContent = '00';
+                document.getElementById('countdownSeconds').textContent = '00';
+                document.getElementById('countdownTitle').textContent = '¡El gran día ha llegado!';
                 return;
             }
 
-            const targetDate = new Date(countdownDate + 'T15:00:00').getTime();
-            
-            if (countdownInterval) clearInterval(countdownInterval);
-            
-            countdownInterval = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-                if (distance < 0) {
-                    clearInterval(countdownInterval);
-                    document.querySelector('.countdown-title').textContent = '¡Ya es el gran día!';
-                    document.getElementById('days').textContent = '00';
-                    document.getElementById('hours').textContent = '00';
-                    document.getElementById('minutes').textContent = '00';
-                    document.getElementById('seconds').textContent = '00';
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.querySelector('.countdown-title').textContent = 'Faltan solo...';
-                document.getElementById('days').textContent = String(days).padStart(2, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            }, 1000);
+            document.getElementById('countdownDays').textContent = days.toString().padStart(2, '0');
+            document.getElementById('countdownHours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('countdownMinutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('countdownSeconds').textContent = seconds.toString().padStart(2, '0');
         }
 
-        document.getElementById('editCountdownDate').addEventListener('change', () => {
-            if (countdownInterval) clearInterval(countdownInterval);
-            updateCountdown();
-        });
-
-        // Initialize countdown
-        updateCountdown();
-
-        // Music Control
-        const musicControl = document.getElementById('musicControl');
+        // ============================================
+        // 3. CONTROL DE MÚSICA DE FONDO
+        // ============================================
+        const musicBtn = document.getElementById('musicControlBtn');
+        const musicIcon = document.getElementById('musicIcon');
         const backgroundMusic = document.getElementById('backgroundMusic');
-        let isPlaying = false;
+        let isMusicPlaying = false;
 
-        musicControl.addEventListener('click', () => {
-            if (isPlaying) {
-                backgroundMusic.pause();
-                musicControl.innerHTML = '<i class="fas fa-music"></i>';
-                musicControl.classList.remove('playing');
+        // Intentar reproducir automáticamente (con interacción del usuario)
+        musicBtn.addEventListener('click', function() {
+            if (!isMusicPlaying) {
+                backgroundMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicIcon.classList.remove('fa-music');
+                    musicIcon.classList.add('fa-pause');
+                    musicBtn.classList.add('playing');
+                }).catch(error => {
+                    console.log("Reproducción automática bloqueada. El usuario debe interactuar primero.");
+                    // Si falla, cambia el icono para indicar que debe hacer clic
+                    musicIcon.classList.remove('fa-music');
+                    musicIcon.classList.add('fa-play');
+                });
             } else {
-                backgroundMusic.play();
-                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
-                musicControl.classList.add('playing');
-            }
-            isPlaying = !isPlaying;
-        });
-
-        document.getElementById('editMusicUrl').addEventListener('input', (e) => {
-            if (e.target.value.trim()) {
-                backgroundMusic.src = e.target.value;
-                backgroundMusic.load();
+                backgroundMusic.pause();
+                isMusicPlaying = false;
+                musicIcon.classList.remove('fa-pause', 'fa-play');
+                musicIcon.classList.add('fa-music');
+                musicBtn.classList.remove('playing');
             }
         });
 
-        // Close edit panel when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!editPanel.contains(e.target) && !editButton.contains(e.target)) {
+        // ============================================
+        // 4. PANEL DE EDICIÓN - FUNCIONALIDAD
+        // ============================================
+        const editPanel = document.getElementById('editPanel');
+        const editBtn = document.getElementById('editControlBtn');
+        const closeEditBtn = document.getElementById('closeEditPanelBtn');
+
+        // Abrir panel de edición
+        editBtn.addEventListener('click', function() {
+            editPanel.classList.add('active');
+        });
+
+        // Cerrar panel de edición
+        closeEditBtn.addEventListener('click', function() {
+            editPanel.classList.remove('active');
+        });
+
+        // Cerrar panel haciendo clic fuera de él
+        document.addEventListener('click', function(event) {
+            if (!editPanel.contains(event.target) && !editBtn.contains(event.target) && editPanel.classList.contains('active')) {
                 editPanel.classList.remove('active');
             }
+        });
+
+        // ============================================
+        // 5. EDICIÓN EN TIEMPO REAL DE LOS CAMPOS
+        // ============================================
+        // Mapeo de campos de edición a elementos de visualización
+        const editMap = [
+            { editId: 'editIntroText', targetId: 'introText', isHTML: false },
+            { editId: 'editChildName', targetId: 'childName', isHTML: false },
+            { editId: 'editEventTime', targetId: 'eventTimeDisplay', isHTML: false },
+            { editId: 'editEventDay', targetId: 'eventDayDisplay', isHTML: false },
+            { editId: 'editEventDateText', targetId: 'eventDateDisplay', isHTML: false },
+            { editId: 'editVenueName', targetId: 'venueName', isHTML: false },
+            { editId: 'editVenueAddress', targetId: 'venueAddress', isHTML: true }, // Usa saltos de línea
+            { editId: 'editParentsNames', targetId: 'parentsNames', isHTML: true },
+            { editId: 'editGodparentsNames', targetId: 'godparentsNames', isHTML: true },
+            { editId: 'editFinalMessage', targetId: 'finalMessage', isHTML: false }
+        ];
+
+        // Configurar event listeners para cada campo de edición
+        editMap.forEach(item => {
+            const editElement = document.getElementById(item.editId);
+            const targetElement = document.getElementById(item.targetId);
+
+            if (editElement && targetElement) {
+                editElement.addEventListener('input', function() {
+                    if (item.isHTML) {
+                        // Reemplazar saltos de línea por <br> para renderizado HTML
+                        targetElement.innerHTML = this.value.replace(/\n/g, '<br>');
+                    } else {
+                        targetElement.textContent = this.value;
+                    }
+                });
+            }
+        });
+
+        // Actualizar la fecha de la cuenta regresiva
+        document.getElementById('editEventDate').addEventListener('change', function() {
+            const newDate = new Date(this.value + 'T17:00:00');
+            if (!isNaN(newDate.getTime())) {
+                targetEventDate = newDate;
+                updateCountdown();
+            }
+        });
+
+        // ============================================
+        // 6. ACTUALIZACIÓN DE ENLACES DE WHATSAPP
+        // ============================================
+        function updateWhatsAppLinks() {
+            const childName = document.getElementById('editChildName').value;
+            const message = `Hola! Confirmo mi asistencia al cumpleaños y bautizo de ${childName}.`;
+            const encodedMessage = encodeURIComponent(message);
+
+            const momNumber = document.getElementById('editWhatsAppMom').value;
+            const dadNumber = document.getElementById('editWhatsAppDad').value;
+
+            if (momNumber) {
+                document.getElementById('whatsappMomBtn').href = `https://wa.me/${momNumber}?text=${encodedMessage}`;
+            }
+            if (dadNumber) {
+                document.getElementById('whatsappDadBtn').href = `https://wa.me/${dadNumber}?text=${encodedMessage}`;
+            }
+        }
+
+        // Actualizar enlaces cuando cambian los números
+        document.getElementById('editWhatsAppMom').addEventListener('input', updateWhatsAppLinks);
+        document.getElementById('editWhatsAppDad').addEventListener('input', updateWhatsAppLinks);
+        document.getElementById('editChildName').addEventListener('input', updateWhatsAppLinks);
+
+        // Inicializar enlaces al cargar
+        updateWhatsAppLinks();
+
+        // ============================================
+        // 7. DESPLAZAMIENTO SUAVE (SMOOTH SCROLL)
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Desplazamiento suave para el prompt de la portada
+        document.querySelector('.scroll-prompt').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.countdown-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         });
     </script>
 </body>
